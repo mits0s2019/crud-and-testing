@@ -2,6 +2,7 @@ package com.example.userservice.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
@@ -22,6 +23,12 @@ public class User implements Serializable {
     @Size(min = 4, max = 30)
     @Column(name = "username")
     private String username;
+
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 4, max = 30)
+    @Column(name = "email")
+    @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Invalid email")
     private String email;
 
 

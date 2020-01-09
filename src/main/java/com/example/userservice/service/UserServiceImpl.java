@@ -25,8 +25,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> findAllUsers() {
+        return usersRepo.findAll();
+    }
+
+    @Override
     public Optional<User> create(User user) {
        User savedUser= usersRepo.save(user);
        return Optional.of(savedUser);
     }
+
+    @Override
+    public Optional<User> findUserById(int id) {
+        return usersRepo.findById(id);
+    }
+
+    @Override
+    public void deleteUserById(int id) {
+        usersRepo.deleteById(id);
+    }
+
+
 }
