@@ -30,9 +30,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> create(User user) {
-       User savedUser= usersRepo.save(user);
-       return Optional.of(savedUser);
+    public User create(User user) {
+       return usersRepo.save(user);
     }
 
     @Override

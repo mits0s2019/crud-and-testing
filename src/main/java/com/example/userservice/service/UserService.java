@@ -9,7 +9,7 @@ public interface UserService {
 
      List<User> findAll();
      List<User> findAllUsers();
-     Optional<User> create(User user);
+     User create(User user);
      Optional<User> findUserById(int id);
      void deleteUserById(int id);
 }
