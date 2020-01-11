@@ -6,6 +6,8 @@ import com.example.userservice.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
@@ -38,8 +40,8 @@ public class UserController {
     public ResponseEntity save(@Valid @RequestBody User user){
         User createdUser=userService.create(user);
         URI uri= ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{userId}").buildAndExpand(createdUser.getUserId()).toUri();
-
-        return ResponseEntity.created(uri).body(createdUser);
+        
+        return ResponseEntity.created(uri).contentType(MediaType.APPLICATION_JSON).body(createdUser);
     }
 
     @PutMapping("user/{id}")
